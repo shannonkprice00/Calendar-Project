@@ -2,46 +2,6 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var currentDay = $("#currentDay");
-var hourDiv = [{
-  div: $("#hour-8a"),
-  hour: 8
-}, {
-  div: $("#hour-9a"),
-  hour: 9
-}, {
-  div: $("#hour-10a"),
-  hour: 10
-}, {
-  div: $("#hour-11a"),
-  hour: 11
-}, {
-  div: $("#hour-12p"),
-  hour: 12
-}, {
-  div: $("#hour-1p"),
-  hour: 13
-}, {
-  div: $("#hour-2p"),
-  hour: 14
-}, {
-  div: $("#hour-3p"),
-  hour: 15
-}, {
-  div: $("#hour-4p"),
-  hour: 16
-}, {
-  div: $("#hour-5p"),
-  hour: 17
-}, {
-  div: $("#hour-6p"),
-  hour: 18
-}, {
-  div: $("#hour-7p"),
-  hour: 19
-}, {
-  div: $("#hour-8p"),
-  hour: 20
-}]
 var today = dayjs();
 var currentHour = dayjs().hour();
 
@@ -60,18 +20,13 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  for (var i = 0; i < hourDiv.length; i++) {
-    var indexEl = $(hourDiv[i].div);
-    console.log("Index Div:")
-    console.log(indexEl);
-    var indexHour = $(hourDiv[i].hour);
-    console.log("Index Hour:")
-    console.log(indexHour);
-    if (currentHour > indexHour) {
+  for (var i = 8; i <= 20; i++) {
+    var indexEl = $("#hour-"+i);
+    if (currentHour > i) {
       indexEl.addClass("past");
-    } else if (currentHour === indexHour) {
+    } else if (currentHour === i) {
       indexEl.addClass("present");
-    } else if (currentHour < indexHour) {
+    } else if (currentHour < i) {
       indexEl.addClass("future")
     };
   };
